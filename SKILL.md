@@ -139,3 +139,4 @@ Bad report:
 - Status is a draft they can edit. Do not post it to X
 - Weights in `references/algorithm.md` are a snapshot. If they may be stale, say so and point to [xai-org/x-algorithm](https://github.com/xai-org/x-algorithm)
 - Suggested agents, in this order: Claude Code, Codex, Cursor
+- Suggested install: `npx skills add jarvis-xy/x-account-diagnose -g -y`

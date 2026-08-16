@@ -18,7 +18,13 @@ The zip also contains DMs, emails, and IPs. Leave it on the machine. Do not mail
 
 UTH is usually one month. Archive can cover many months. The report must say which month the labels belong to.
 
-## 3. Hand both paths to the agent
+## 3. Install then hand both paths to the agent
+
+One command:
+
+```bash
+npx skills add jarvis-xy/x-account-diagnose -g -y
+```
 
 Chinese:
 

@@ -6,6 +6,14 @@
 
 Let an agent diagnose your X account on your machine. Download two official files, hand them to Claude Code, Codex, or Cursor. Nothing is uploaded.
 
+```bash
+npx skills add jarvis-xy/x-account-diagnose -g -y
+```
+
+一条命令，装到本机已有的 Agent（Claude Code、Codex、Cursor 等）。`-g` 是装到用户目录，`-y` 跳过确认。
+
+One command installs it for the agents already on your machine.
+
 ---
 
 ## 中文
@@ -37,20 +45,25 @@ X 把推荐算法开源之后，不必先猜「怎么涨粉」。把两份官方
 
 ### 安装
 
+一键安装（推荐）：
+
 ```bash
-git clone https://github.com/jarvis-xy/x-account-diagnose.git
-
-# Claude Code
-cp -R x-account-diagnose ~/.claude/skills/x-account-diagnose
-
-# Codex
-cp -R x-account-diagnose "${CODEX_HOME:-$HOME/.codex}/skills/x-account-diagnose"
-
-# Cursor
-cp -R x-account-diagnose ~/.cursor/skills/x-account-diagnose
+npx skills add jarvis-xy/x-account-diagnose -g -y
 ```
 
-也可以不拷贝，直接告诉 Agent 仓库路径。
+指定 Agent：
+
+```bash
+npx skills add jarvis-xy/x-account-diagnose -g -y -a claude-code -a codex -a cursor
+```
+
+本机检测到哪些 Agent，就装到哪些目录。装完直接对 Agent 说「用 x-account-diagnose 诊断这个号」。
+
+也可以不装，只告诉 Agent 仓库路径。手动克隆仅在 `npx` 不可用时再用：
+
+```bash
+git clone https://github.com/jarvis-xy/x-account-diagnose.git ~/.claude/skills/x-account-diagnose
+```
 
 ### 使用教程
 
@@ -116,20 +129,25 @@ No follow-for-follow copy. No promised growth.
 
 ### Install
 
+One command (recommended):
+
 ```bash
-git clone https://github.com/jarvis-xy/x-account-diagnose.git
-
-# Claude Code
-cp -R x-account-diagnose ~/.claude/skills/x-account-diagnose
-
-# Codex
-cp -R x-account-diagnose "${CODEX_HOME:-$HOME/.codex}/skills/x-account-diagnose"
-
-# Cursor
-cp -R x-account-diagnose ~/.cursor/skills/x-account-diagnose
+npx skills add jarvis-xy/x-account-diagnose -g -y
 ```
 
-Or skip the copy and tell the agent the repo path.
+Pin specific agents:
+
+```bash
+npx skills add jarvis-xy/x-account-diagnose -g -y -a claude-code -a codex -a cursor
+```
+
+The CLI detects which agents you already have. Then tell the agent: `use x-account-diagnose on this account`.
+
+You can also skip install and pass the repo path. Clone by hand only if `npx` is unavailable:
+
+```bash
+git clone https://github.com/jarvis-xy/x-account-diagnose.git ~/.claude/skills/x-account-diagnose
+```
 
 ### How to run it
 
