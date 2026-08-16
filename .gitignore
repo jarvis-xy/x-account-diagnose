@@ -1,0 +1,12 @@
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+venv/
+twitter-*/
+*.zip
+reports/
+*-summary.json
+/tmp/
+.idea/
+.vscode/

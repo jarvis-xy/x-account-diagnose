@@ -1,0 +1,19 @@
+{
+  "period": {
+    "startDate": "2026-07-01",
+    "endDate": "2026-07-31",
+    "timezone": "UTC"
+  },
+  "generatedAt": "2026-08-08T23:59:59Z",
+  "postCount": "5",
+  "postLabels": [
+    {
+      "label": "NSFW_HIGH_RECALL",
+      "posts": "1",
+      "percentageOfPosts": "20%",
+      "effect": "Post hidden from recommendations to non-followers."
+    }
+  ],
+  "accountLabels": [],
+  "totalAccountLabels": 0
+}

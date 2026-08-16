@@ -1,0 +1,4 @@
+interface:
+  display_name: "X Account Diagnose"
+  short_description: "Local X archive + UTH diagnosis"
+  default_prompt: "Use $x-account-diagnose to read my local X Archive and Under the Hood export, then write a report covering account risk, positioning, and one optimization."
