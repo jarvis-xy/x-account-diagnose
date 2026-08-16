@@ -2,7 +2,7 @@
 
 Do this on the user's own X account. The skill never logs in for them.
 
-## 1. Archive
+## 1. X 账号数据包 / Archive
 
 1. Open X → Settings → Your account → Download an archive of your data
 2. Wait for the email, download the zip
@@ -40,6 +40,6 @@ UTH: /path/to/x-under-the-hood.json
 
 | Missing | What to say |
 |---|---|
-| No `tweets.js` | 这不是完整的账号数据包。重新解压，确认里面有 `data/tweets.js` |
+| No `tweets.js` | 这不是完整的 X 账号数据包。重新解压，确认里面有 `data/tweets.js` |
 | No UTH JSON | 先去 x.com/i/under_the_hood 导出最近一个完整自然月 |
-| Only a screenshot | 截图不够。必须是官方 JSON 和官方数据包 |
+| Only a screenshot | 截图不够。不要让别人代下。必须是官方 JSON 和官方数据包 |

@@ -88,25 +88,25 @@ Match with the profile bio: [yes / it matched earlier, then drifted / it never m
 
 ---
 
-## 3. What to change next
+## 3. Creation advice
 
-No vague extra playbook. No follow-for-follow. No promised growth.
+Use X's open-source ranking to name an optimization direction and a few correction rules. No vague extra playbook. No follow-for-follow copy. No promised growth.
 
-### Change only one thing this month
+### Optimization direction
 
-[One sentence. It must point back to a number above. Name the habit that goes against X's open-source ranking rules.]
+[One priority sentence. It must point back to a number above. Name the habit that goes against X's open-source ranking rules. If replies dominate, say to cap daily replies and require each one to add a judgment, a step, or a cost the author has paid. Do not hard-code a reply quota unless the user set one.]
 
-### Two smaller tests
+Smaller tests:
 
 1. [ ]
 2. [ ]
 
-### Do not do this
+### Correction rules
 
-- Follow-for-follow or like-for-like
-- Keep treating replies as the main daily work
-- Keep posting the kind of content that already received restriction labels
-- Upload the archive to a website "diagnosis tool"
+- No follow-for-follow content
+- Do not keep treating replies as the main daily work
+- Do not keep posting the kind of content that already received restriction labels
+- Do not upload the X account archive to a website "diagnosis tool"
 
 ### How to check next time
 
