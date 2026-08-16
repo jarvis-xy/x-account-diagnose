@@ -20,16 +20,26 @@ UTH is usually one month. Archive can cover many months. The report must say whi
 
 ## 3. Hand both paths to the agent
 
+Chinese:
+
 ```text
 用 x-account-diagnose 诊断这个号。
 Archive：/path/to/twitter-2026-08-15-...
 UTH：/path/to/x-under-the-hood.json
 ```
 
+English:
+
+```text
+Use x-account-diagnose on this account.
+Archive: /path/to/twitter-2026-08-15-...
+UTH: /path/to/x-under-the-hood.json
+```
+
 ## Missing files
 
 | Missing | What to say |
 |---|---|
-| No `tweets.js` | 这不是完整 Archive。重新解压，确认里面有 `data/tweets.js` |
+| No `tweets.js` | 这不是完整的账号数据包。重新解压，确认里面有 `data/tweets.js` |
 | No UTH JSON | 先去 x.com/i/under_the_hood 导出最近一个完整自然月 |
 | Only a screenshot | 截图不够。必须是官方 JSON 和官方数据包 |

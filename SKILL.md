@@ -1,11 +1,11 @@
 ---
 name: x-account-diagnose
-description: Diagnoses an X/Twitter account from the official Archive and Under the Hood export. Reads the two local files, never uploads them, and writes a report covering account risk, positioning, and one-change optimization. Use when the user mentions X account diagnosis, Under the Hood, twitter archive, 账号诊断, 限流, x-account-diagnose, or wants a local report from X exports.
+description: Diagnoses an X/Twitter account from the official Archive and Under the Hood export. Reads the two local files on the user's machine, never uploads them, and writes a formatted report covering recommendation limits, bio vs actual posts, and one next change. Use when the user mentions X account diagnosis, Under the Hood, twitter archive, 账号诊断, 限流, x-account-diagnose, or wants a local report from X exports.
 ---
 
 # X Account Diagnose
 
-Read two official local exports, summarize them with the bundled script, then write one report. Do not invent a second workflow.
+Read two official local exports, summarize them with the bundled script, then write one formatted report. Do not invent a second workflow.
 
 Required inputs:
 
@@ -30,7 +30,7 @@ Task Progress:
 - [ ] Locate Archive + UTH
 - [ ] Run scripts/summarize.py
 - [ ] Read the summary JSON only
-- [ ] Write the report from the template
+- [ ] Write the formatted report from the template
 - [ ] Give the user one next action
 ```
 
@@ -41,7 +41,7 @@ Ask for both paths if the user did not give them. Accept:
 - Archive: zip, `twitter-*` folder, or the inner `data/` folder
 - UTH: `.json` from Under the Hood
 
-If the user also pastes a bio or says what the account is for, keep that as claimed positioning. Do not treat it as proven until the originals match.
+If the user also pastes a bio, treat it as the **profile bio**, not as proven positioning. Check it against original posts.
 
 ### 2. Summarize locally
 
@@ -60,47 +60,76 @@ The script only loads an allowlist. It prints counts and writes a sanitized JSON
 
 Open the JSON produced by the script. Use:
 
-- `account` for handle, bio, follow graph
+- `account` for handle, bio, follow counts
 - `uth` for account labels and post labels
 - `posts` for reply ratio, monthly mix, themes, top originals
-- `signals` for the first-pass risk flags
+- `signals` for first-pass flags
 
-For label meanings and For You weights, read [references/labels.md](references/labels.md) and [references/algorithm.md](references/algorithm.md).
+For label meanings and ranking weights, read [references/labels.md](references/labels.md) and [references/algorithm.md](references/algorithm.md).
 
-UTH usually covers one calendar month. Do not apply that month's account labels to later posts that are only in the Archive.
+UTH usually covers one calendar month. Do not use that month's account labels to judge later posts that only appear in the Archive.
 
 ### 4. Write the report
 
-Copy [references/report-template.md](references/report-template.md). Write in the user's language. Fill every section with numbers from this export. Do not use another account's numbers.
+Write in the user's language.
+
+- Chinese: copy [references/report-template.md](references/report-template.md)
+- English: copy [references/report-template.en.md](references/report-template.en.md)
+
+Keep the heading names, horizontal rules, and table layout. Fill every section with numbers from this export. Do not use another account's numbers.
 
 The report must contain:
 
-1. **风险识别** — account labels first, then post labels, then behavior that the open-source scorer punishes
-2. **定位梳理** — claimed bio vs what originals actually say, by month; name the split if there is one
-3. **优化建议** — exactly one primary change that matches the worst mismatch; two secondary changes max
+1. **账号有没有被限制推荐** — account labels first, then post labels, then posting habits that X's open-source ranking rules punish
+2. **个人简介和实际内容对不对得上** — profile bio vs what originals actually say, by month; name the split if there is one
+3. **下一步建议** — exactly one primary change that matches the worst mismatch; two secondary changes max
 
-Also include a 10-line "how this was done" so the user can rerun it next month.
+Also include a short "how to run this again" so the user can repeat it next month.
 
-### 5. Quality bar
+### 5. Plain language
+
+Write as if explaining to a creator who has never opened the algorithm repo. Prefer a short everyday sentence over a compact jargon phrase.
+
+| Do not write | Write this instead |
+|---|---|
+| 声称的定位 / claimed positioning | 账号个人简介 / profile bio |
+| 回复当主业 | 把回复别人评论当成主要运营动作 |
+| 和公式拧着 / 停掉和公式拧着的那一件事 | 停止和 X 开源推荐规则相违背的动作 |
+| 整号限流 | 整个账号被限制推荐 |
+| 主粮 | 这个月主要在发什么 |
+| 定罪 | 不能用这份月报判断其他月份 |
+| 站外 | 没关注你的人那边 |
+| 聚合 | 单帖标签攒多了，可能变成整个账号的限制 |
+| 不另起玄学 | 不另搞一套说不清的方法 |
+
+First time you mention For You, write: 推荐页（没关注你的人也能刷到）. After that, 推荐页 is enough.
+
+Full glossary: [references/writing.md](references/writing.md).
+
+Do not dump raw label IDs without a one-line meaning. Example: `NSFW_HIGH_PRECISION` → 系统较有把握判定为成人内容，没关注你的人刷不到，还会加警告。
+
+### 6. Quality bar
 
 Good report:
 
 - Opens with a verdict in 3 sentences
 - Every claim has a count, date range, or label name
-- Distinguishes "account blocked from For You" from "some posts hidden"
+- Distinguishes "the whole account is blocked from recommendations" from "some posts are hidden"
 - Does not recommend mutual follows, reply spam, or evasion
 - Does not promise followers, impressions, or creator payouts
 - Uses 更可能 / 值得测试, not 一定 / 保证
+- Looks like a finished document: title, meta table, horizontal rules, no leftover `[brackets]`
 
 Bad report:
 
 - Calls a quiet account "shadowbanned" when `accountLabels` is empty
-- Treats likes as For You score (like weight is 0.5; copy-link is 20)
+- Treats likes as recommendation score (like weight is 0.5; copy-link is 20)
 - Dumps 50 tweet texts
 - Turns the advice into a growth course
+- Leaves template placeholders or unformatted JSON in the markdown
 
 ## Defaults
 
-- Output a markdown file if the user wants it saved. Default name: `x-diagnose-YYYY-MM-DD.md` next to the UTH file, or wherever they ask
+- Save a markdown file if the user wants it kept. Default name: `x-diagnose-YYYY-MM-DD.md` next to the UTH file, or wherever they ask
 - Status is a draft they can edit. Do not post it to X
 - Weights in `references/algorithm.md` are a snapshot. If they may be stale, say so and point to [xai-org/x-algorithm](https://github.com/xai-org/x-algorithm)

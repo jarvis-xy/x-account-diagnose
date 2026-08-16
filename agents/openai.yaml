@@ -1,4 +1,4 @@
 interface:
   display_name: "X Account Diagnose"
-  short_description: "Local X archive + UTH diagnosis"
-  default_prompt: "Use $x-account-diagnose to read my local X Archive and Under the Hood export, then write a report covering account risk, positioning, and one optimization."
+  short_description: "Local X archive diagnosis, no upload"
+  default_prompt: "Use $x-account-diagnose to read my local X Archive and Under the Hood export, then write a formatted report: whether recommendations are restricted, whether the profile bio matches the posts, and one change that follows X's open-source ranking rules."
